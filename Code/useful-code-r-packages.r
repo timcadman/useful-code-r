@@ -17,6 +17,9 @@
 install.packages("extrafont")
 install.packages("ggplot2")
 install.packages("plyr")
+install.packages("Cairo")
+install.packages("readstata13")
+install.packages("dplyr")
 
 
 ################################################################################
