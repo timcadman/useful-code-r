@@ -16,7 +16,7 @@ theme <- theme(plot.background = element_rect(fill =scales::alpha("#CCCCCC", 0.3
                panel.grid.minor=element_line(colour="white"), 
                plot.title = element_text(hjust = 0, vjust=10, size=13.5, face="bold"), 
                plot.margin=unit(c(0,0.5,0.5,0.5),"cm"), 
-               text=element_text(family="Verdana", size=14), 
+               text=element_text(family="calibri", size=14), 
                axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)),
                axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)),
                legend.justification = c(0, 0.5), 
