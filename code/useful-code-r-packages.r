@@ -20,7 +20,22 @@ install.packages("plyr")
 install.packages("Cairo")
 install.packages("readstata13")
 install.packages("dplyr")
-
+install.packages("FactoMineR")
+install.packages("mirt")
+install.packages("ltm")
+install.packages("gridExtra")
+install.packages("latticeExtra")
+install.packages("psych")
+install.packages("devtools")
+install_github("explodecomputer/alspac")
+install.packages("lavaan")
+install.packages("semTools")
+install.packages("semPlot")
+install.packages("knitr")
+install.packages("kable")
+install.packages("rmarkdown")
+install.packages("installr")
+install.packages("kableExtra")
 
 ################################################################################
 # 3. Import and register fonts  
