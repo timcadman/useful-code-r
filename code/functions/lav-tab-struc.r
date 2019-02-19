@@ -16,6 +16,9 @@ tab_struc <- parameterEstimates(object, standardized=TRUE) %>%
 
 colnames(tab_struc) <- c("", "Beta", "Std.Err", "P-value")
 
+tab_struc[, 4] <- formatC(tab_struc[, 4], digits = 3, format = "f")
+
 return(tab_struc)
 
 }
+

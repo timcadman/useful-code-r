@@ -36,6 +36,15 @@ install.packages("kable")
 install.packages("rmarkdown")
 install.packages("installr")
 install.packages("kableExtra")
+install.packages("tinytex")
+install.packages("extrafont")
+install.packages("tableone")
+install.packages("VIM")
+install.packages("visdat")
+install.packages("magrittr")
+install.packages("qwraps2")
+install.packages("effects")
+install.packages("R2MLwiN")
 
 ################################################################################
 # 3. Import and register fonts  

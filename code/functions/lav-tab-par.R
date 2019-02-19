@@ -4,9 +4,9 @@ partab <- parameterEstimates(object, standardized=TRUE) %>%
   filter(op == "=~") %>% 
   select(Indicator=rhs, Beta=std.all)
 
-varlabs <- vartable$lab[match(as.character(vartable$name), as.character(partab$Indicator))]
+varlabs <- vartable$lab[match(as.character(partab$Indicator), as.character(vartable$name))]
 
 out <- data.frame(partab$Indicator, varlabs, partab$Beta)
-colnames(out) <- c("Variable name", "Variable label", "Beta")
+colnames(out) <- c("", "", "Beta")
 
 return(out)}
