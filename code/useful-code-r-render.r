@@ -53,6 +53,43 @@ rmarkdown::render("c:/repos/school-enjoyment-mh/code/semh-report-bmi.rmd",
 system2("open","c:/repos/school-enjoyment-mh/reports/semh-bmi.pdf")
 
 
+################################################################################
+# LifeCycle data planning  
+################################################################################
+
+rmarkdown::render("c:/repos/lc-trajectories-inequality/code/lc-traj-ineq-plan.rmd",
+	output_file="c:/repos/lc-trajectories-inequality/reports/plan_19.02.19.pdf")
+system2("open","c:/repos/lc-trajectories-inequality/reports/plan_19.02.19.pdf")
+
+################################################################################
+# GOSH asc-sex  
+################################################################################
+ rmarkdown::render("C:/repos/gosh-asc-sex/code/gosh-asc-sex-missing.rmd",
+	output_file="C:/repos/gosh-asc-sex/reports/missing.pdf")
+system2("open","C:/repos/gosh-asc-sex/reports/missing.pdf")
+
+################################################################################
+# Constanza report  
+################################################################################
+rmarkdown::render("C:/repos/life-cycle/wp3/code/wp3-constanza_04.03.19.rmd",
+	output_file="C:/repos/life-cycle/wp3/reports/wp3-constanza.pdf")
+system2("open","C:/repos/life-cycle/wp3/reports/wp3-constanza.pdf")
+
+
+################################################################################
+# TPF report  
+################################################################################
+rmarkdown::render("C:/repos/teen-parenting/code/tpf-report-efa.rmd",
+	output_file="C:/repos/teen-parenting/reports/tpf-report-efa_06.03.19.pdf")
+system2("open","C:/repos/teen-parenting/reports/tpf-report-efa_06.03.19.pdf")
+
+
+
+
+
+
+
+
 
 ################################################################################
 # 3. Testing
@@ -64,6 +101,3 @@ system2("open","C:/repos/stats-learning/reports/test.pdf")
 
 
 
- rmarkdown::render("C:/repos/gosh-asc-sex/code/gosh-asc-sex-missing.rmd", 
-	output_file="C:/repos/gosh-asc-sex/reports/missing.pdf")
-system2("open","C:/repos/gosh-asc-sex/reports/missing.pdf")
