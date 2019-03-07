@@ -45,6 +45,13 @@ install.packages("magrittr")
 install.packages("qwraps2")
 install.packages("effects")
 install.packages("R2MLwiN")
+install.packages("bookdown")
+install.packages("languageserver")
+install.packages("cairoDevice")
+install.packages("installr")
+install.packages("polycor")
+install.packages("GPArotation")
+install.packages("purrr")
 
 ################################################################################
 # 3. Import and register fonts  
