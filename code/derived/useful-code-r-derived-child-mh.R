@@ -68,9 +68,6 @@ chi_mh_mast.data <- extractVars(chi_mh.varlist)
 
 chi_mh.data <- chi_mh_mast.data
 
-chi_mh.data <- chi_mh.data %>%
-  mutate_if(is.numeric, funs(ifelse( . < 0 | . == 9, NA, .)))
-
 ################################################################################
 # 2. Create variable lists  
 ################################################################################
@@ -108,6 +105,23 @@ mfq.ypc.vars <- c("YPC1650", "YPC1651", "YPC1653", "YPC1654", "YPC1655", "YPC165
                   "YPC1658", "YPC1659", "YPC1660", "YPC1662", "YPC1663", "YPC1665", 
                   "YPC1667")
 
+
+################################################################################
+# 3. Recode items and set missing values  
+################################################################################
+chi_mh.data <- chi_mh.data %>%
+  mutate_if(is.numeric, 
+  funs(ifelse( . < 0 | . == 9, NA, .)))
+
+chi_mh.data <- chi_mh.data %>%
+  mutate_at(vars(mfq.ta.vars, mfq.tc.vars, mfq.fd.vars, mfq.ff.vars, mfq.fg.vars, 
+    mfq.ccs.vars, mfq.ccx.vars, mfq.cct.vars, mfq.ypa.vars), 
+  funs(3 - .))
+
+chi_mh.data <- chi_mh.data %>%
+  mutate_at(vars(mfq.ypb.vars, mfq.ypc.vars),
+  funs(. - 1))
+
 ################################################################################
 # 3. Derive variables  
 ################################################################################
@@ -140,18 +154,18 @@ mutate(sqd_ext_3_mat = j557b + j557c,
 ## ---- MFQ -------------------------------------------------------------------- 
 chi_mh.data <- chi_mh.data %>%
 mutate(
-mfq_10_chi = proRate(chi_mh.data, mfq.fd.vars, 6),
-mfq_12_chi = proRate(chi_mh.data, mfq.ff.vars, 6),
-mfq_13_chi = proRate(chi_mh.data, mfq.fg.vars, 6),
-mfq_16_chi = proRate(chi_mh.data, mfq.ccs.vars, 6), 
-mfq_17_chi = proRate(chi_mh.data, mfq.ccx.vars, 6),
-mfq_21_chi = proRate(chi_mh.data, mfq.ypa.vars, 6),
-mfq_22_chi = proRate(chi_mh.data, mfq.ypb.vars, 6),
-mfq_23_chi = proRate(chi_mh.data, mfq.ypc.vars, 6), 
+mfq_10_chi = proRate(chi_mh.data, mfq.fd.vars, 0),
+mfq_12_chi = proRate(chi_mh.data, mfq.ff.vars, 0),
+mfq_13_chi = proRate(chi_mh.data, mfq.fg.vars, 0),
+mfq_16_chi = proRate(chi_mh.data, mfq.ccs.vars, 0), 
+mfq_17_chi = proRate(chi_mh.data, mfq.ccx.vars, 0),
+mfq_21_chi = proRate(chi_mh.data, mfq.ypa.vars, 0),
+mfq_22_chi = proRate(chi_mh.data, mfq.ypb.vars, 0),
+mfq_23_chi = proRate(chi_mh.data, mfq.ypc.vars, 0), 
 mfq_9_mat = ku673b, 
 mfq_11_mat = kw6100b, 
-mfq_13_mat = proRate(chi_mh.data, mfq.ta.vars, 6), 
-mfq_16_mat = proRate(chi_mh.data, mfq.tc.vars, 6)) 
+mfq_13_mat = proRate(chi_mh.data, mfq.ta.vars, 0), 
+mfq_16_mat = proRate(chi_mh.data, mfq.tc.vars, 0))
 
 ## ---- CIS-R ------------------------------------------------------------------
 
