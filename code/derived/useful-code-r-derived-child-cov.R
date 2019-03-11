@@ -26,13 +26,14 @@ chi_cov_mast.data <- extractVars(chi_cov.varlist)
 
 chi_cov.data <- chi_cov_mast.data
 
-str(chi_cov.data)
-
+################################################################################
+# 2. Set missing  
+################################################################################
 chi_cov.data <- chi_cov.data %>%
   mutate_if(is.numeric, funs(ifelse( . < 0 | . == 9, NA, .)))
 
 ################################################################################
-# 2. Child  
+# 3. Derive variables
 ################################################################################
 chi_cov.data <- chi_cov.data %>%
 mutate(
