@@ -14,15 +14,24 @@
 #            threshold then NA will be returned instead of a pro-rated score.
 
 proRate <- function(data, varlist, threshold){
+
+sub <- subset(data, select=varlist)
   
 if(threshold >= length(varlist)){
 	stop("Cannot pro-rate: threshold for missingness is >= number of variables")
 }
-  sub <- subset(data, select=varlist)
-  sub$nmiss <- apply(sub, 1, function(x) sum(is.na(x)))
+  
+else if(threshold == 0){
+	sub$totalscore <- rowSums(sub, na.rm=FALSE)
+print("Warning: Only complete cases included, total score is sum of items")
+return(sub$totalscore)
+}
 
+else{
+  sub$nmiss <- apply(sub, 1, function(x) sum(is.na(x)))
   sub$meanscore <- ifelse(sub$nmiss <= threshold, rowMeans(sub, na.rm=TRUE), NA)
   sub$totalscore <- sub$meanscore * length(varlist)
-  return(as.numeric(sub$totalscore))
+return(as.numeric(sub$totalscore))
+}
   
 }
