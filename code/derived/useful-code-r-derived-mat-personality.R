@@ -38,7 +38,6 @@
 # presume that this is because using the other missingness rule there was an
 # increase of low scores, thus the cutpoint for the top quartile was lower.
 
-
 library(alspac)
 library(dplyr)
 library(Hmisc)
