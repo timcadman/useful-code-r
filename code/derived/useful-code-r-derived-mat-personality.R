@@ -130,21 +130,5 @@ mutate(mat_pers_symp =
 ################################################################################
 # 5. Drop temporary variables  
 ################################################################################
-
-
-
-
-
-
-
-
 mat_pers.data <- mat_pers.data %>%
 select(aln, mat_pers_symp, mat_pers_bin)
-
-save(mat_pers.data, file = "z:/projects/ieu2/p6/021/working/data/mat_per.RData")
-
-test <- read.dta13("test.dta")
-
-testy <- stataQuant(test$ksp_ang, 4)
-
-table(testy)
