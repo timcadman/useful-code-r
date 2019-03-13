@@ -29,7 +29,9 @@ return(sub$totalscore)
 
 else{
   sub$nmiss <- apply(sub, 1, function(x) sum(is.na(x)))
-  sub$meanscore <- ifelse(sub$nmiss <= threshold, rowMeans(sub, na.rm=TRUE), NA)
+  sub$meanscore <- ifelse(sub$nmiss <= threshold, 
+  	                  rowMeans(
+  	                  	 select(sub, varlist), na.rm=TRUE), NA)
   sub$totalscore <- sub$meanscore * length(varlist)
 return(as.numeric(sub$totalscore))
 }
