@@ -54,3 +54,5 @@ mutate(
 ################################################################################
 chi_cov.data <- chi_cov.data %>%
 select(aln, qlet, sex, ethnicity, breastfed, mat_childcare)
+
+save(chi_cov.data, file = "z:/projects/ieu2/p6/021/working/data/chi_cov.RData")

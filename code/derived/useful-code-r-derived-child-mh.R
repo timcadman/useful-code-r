@@ -196,3 +196,5 @@ select(aln, qlet, sqd_int_3_mat, sdq_int_6_mat, sdq_int_8_mat, sdq_int_9_mat,
        sqd_ext_11_sch, mfq_10_chi, mfq_12_chi, mfq_13_chi, mfq_16_chi, mfq_17_chi,
        mfq_21_chi, mfq_22_chi, mfq_23_chi, mfq_9_mat, mfq_11_mat, mfq_13_mat,
        mfq_16_mat, cisr_anx_18, cisr_selfharm_18, cisr_dep_18 )
+
+save(chi_mh.data, file = "z:/projects/ieu2/p6/021/working/data/chi_mh.RData")

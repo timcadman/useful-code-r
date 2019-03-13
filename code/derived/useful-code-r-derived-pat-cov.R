@@ -34,11 +34,14 @@ pat_cov_mast.data <- extractVars(pat_cov.varlist)
 
 pat_cov.data <- pat_cov_mast.data
 
+################################################################################
+# 2. Set missing values  
+################################################################################
 pat_cov.data <- pat_cov.data %>%
-  mutate_if(is.numeric, funs(ifelse( . < 0 | . == 9, NA, .)))
+  mutate_if(is.numeric, funs(ifelse( . < 0,  NA, .)))
 
 ################################################################################
-# 2. Derive variables  
+# 3. Derive variables  
 ################################################################################
 
 ## ---- Socioeconomic ----------------------------------------------------------
@@ -55,15 +58,27 @@ mutate(
     pat_finprob = ifelse(pb184 <= 4, 1, 0),
     pat_finprob2 = ifelse(pc224 <= 4, 1, 0),
     pat_finprob8 = ifelse(pd244 <= 4, 1, 0),
-    pat_finprob_early = factor(
-    	                  ifelse(pat_finprob == 1 | pat_finprob2 == 1 | 
-    	                  	     pat_finprob8 == 1, 1, 0),
-                          labels = c("No financial problems", "Financial problems")),
     pat_finprob110 = ifelse(pm2024 <= 3, 1, 0),
-    pat_finprob134 = ifelse(pp5024 <= 3, 1, 0),
-    pat_finprob_late = factor(
-    	                 ifelse(pat_finprob110 == 1 | pat_finprob134 == 1, 1, 0),
-    	                 labels = c("No financial problems", "Financial problems")))
+    pat_finprob134 = ifelse(pp5024 <= 3, 1, 0))
+
+## ---- Financial problems -------------------------------------------------------
+
+# Having some difficulties with how ifelse evaluates NA, recode to -99 to solve.
+pat_cov.data <- pat_cov.data %>%
+mutate_at(vars(pat_finprob, pat_finprob2, pat_finprob8, pat_finprob110, pat_finprob134),
+    funs(ifelse(is.na(.), -99, .)))
+
+pat_cov.data <- pat_cov.data %>%
+mutate(pat_finprob_early = factor(
+                          ifelse(pat_finprob == 1 | pat_finprob2 == 1 | 
+                                 pat_finprob8 == 1, 1, 
+                          ifelse(pat_finprob == -99 & pat_finprob2 == -99 & 
+                                 pat_finprob8 == -99, NA, 0)),
+                          labels = c("No financial problems", "Financial problems")),
+       pat_finprob_late = factor(
+                         ifelse(pat_finprob110 == 1 | pat_finprob134 == 1, 1,
+                         ifelse(pat_finprob110 == -99 & pat_finprob134 == -99, NA, 0)),
+                         labels = c("No financial problems", "Financial problems")))
 
 ## ---- Perinatal---------------------------------------------------------------
 pat_cov.data <- pat_cov.data %>%
@@ -75,27 +90,32 @@ mutate(
 	pat_smokepreg = factor(
 		              ifelse(pb078 == 0, 0, 1),
 		              labels = c("No", "Yes")),
-	pat_epds_pre = pc102,
-    pat_epds_pre_b = factor(
-    	               ifelse(pat_epds_pre <= 12, 0, 1),
-    	               labels = c("Below depression cut-off", "Above depression cut-off")),
     pat_epds_post = pc102, 
     pat_epds_post_b = factor(
     	                ifelse(pat_epds_post <= 12, 0, 1),
     	                labels = c("Below depression cut-off", "Above depression cut-off")))
 
 ## ---- Other risk factors -----------------------------------------------------
+
+# Same issue: need to recode NA to -99
+pat_cov.data <- pat_cov.data %>%
+mutate_at(vars(pc222a, pd242a, pe322a, pf5022),
+    funs(ifelse(is.na(.), -99, .)))
+
 pat_cov.data <- pat_cov.data %>%
 mutate(
 	pat_physpart = factor(
 		             ifelse(pc222a == 1 | pd242a == 1 | pe322a == 1 | pf5022 == 1 | 
-                            pf5022 == 2 | pf5022 == 3 | pf5022 == 4, 1, 0),
+                            pf5022 == 2 | pf5022 == 3 | pf5022 == 4, 1, 
+                            ifelse(pc222a == -99, NA, 0)),
 		             labels = c("No", "Yes")))
 
 ################################################################################
-# 3. Drop original variables  
+# 4. Drop original variables  
 ################################################################################
 pat_cov.data <- pat_cov.data %>%
 select(aln, pat_sclass, pat_ed, pat_finprob_early, pat_finprob_late, 
 	   pat_age, pat_drinkpreg, pat_smokepreg, pat_epds_pre, pat_epds_pre_b,
        pat_epds_post, pat_epds_post_b, pat_physpart)
+
+save(pat_cov.data, file = "z:/projects/ieu2/p6/021/working/data/pat_cov.RData")
