@@ -26,7 +26,7 @@ mat_epds.varlist <- subset(current, name %in% c("b360", "b361", "b362", "b363",
 	"n6068", "n6069", "r4010", "r4011", "r4012", "r4013", "r4014", "r4015", 
 	"r4016", "r4017", "r4018", "r4019", "r4130"))
 
-mat_epds_mast.data <- extractVars(mat_epds.varlist)
+mat_epds_mast.data <- extractVars(mat_epds.varlist, adult_only = TRUE)
 
 mat_epds.data <- mat_epds_mast.data
 

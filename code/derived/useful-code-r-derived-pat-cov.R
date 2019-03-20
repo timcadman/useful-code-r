@@ -30,7 +30,7 @@ pat_cov.varlist <- subset(current, name %in% c("pb184", "pc224", "pd244",
 	"pm2024", "pp5024", "pc996", "pb100", "pb078", "pc102", "pc222a", "pd242a", 
 	"pe322a", "pf5022", "c_sc_ptnr_pp", "c666a"))
 
-pat_cov_mast.data <- extractVars(pat_cov.varlist)
+pat_cov_mast.data <- extractVars(pat_cov.varlist, adult_only = TRUE)
 
 pat_cov.data <- pat_cov_mast.data
 
@@ -115,7 +115,7 @@ mutate(
 ################################################################################
 pat_cov.data <- pat_cov.data %>%
 select(aln, pat_sclass, pat_ed, pat_finprob_early, pat_finprob_late, 
-	   pat_age, pat_drinkpreg, pat_smokepreg, pat_epds_pre, pat_epds_pre_b,
-       pat_epds_post, pat_epds_post_b, pat_physpart)
+	   pat_age, pat_drinkpreg, pat_smokepreg, 
+     pat_epds_post, pat_epds_post_b, pat_physpart)
 
 save(pat_cov.data, file = "z:/projects/ieu2/p6/021/working/data/pat_cov.RData")

@@ -31,7 +31,7 @@ mat_cov.varlist <- subset(current, name %in% c("c645a", "h470", "b_sc_m", "b594"
 	"mz028b", "b032", "b300", "c064", "f242a", "g322a", "h232", "h232a", "d536a", 
 	"f593"))
 
-mat_cov_mast.data <- extractVars(mat_cov.varlist)
+mat_cov_mast.data <- extractVars(mat_cov.varlist, adult_only = TRUE)
 
 mat_cov.data <- mat_cov_mast.data
 
