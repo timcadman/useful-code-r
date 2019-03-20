@@ -52,6 +52,8 @@ install.packages("installr")
 install.packages("polycor")
 install.packages("GPArotation")
 install.packages("purrr")
+install.packages("mice")
+install.packages("captioner")
 
 ################################################################################
 # 3. Import and register fonts  

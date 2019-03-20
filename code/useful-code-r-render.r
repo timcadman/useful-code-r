@@ -28,6 +28,8 @@ windowsFonts("Arnhem-BlondItalic" = windowsFont("Arnhem-BlondItalic"))
 windowsFonts("Arnhem-Bold" = windowsFont("Arnhem-Bold"))
 windowsFonts("Arnhem-Bolditalic" = windowsFont("Arnhem-Bolditalic"))
 
+windowsFonts("AkzidGroProLig" = windowsFont("AkzidGroProLig"))
+
 ## ---- Set up .pdf rendering --------------------------------------------------
 tinytex::install_tinytex()
 
@@ -84,9 +86,21 @@ rmarkdown::render("C:/repos/teen-parenting/code/tpf-report-efa.rmd",
 system2("open","C:/repos/teen-parenting/reports/tpf-report-efa_06.03.19.pdf")
 
 
+################################################################################
+# Alspac errors  
+################################################################################
+rmarkdown::render("tim_alspac_r_13.03.19.Rmd",
+	output_file="tim_alspac_r_13.03.19.pdf")
+system2("open","tim_alspac_r_13.03.19.pdf")
 
 
+################################################################################
+# Test with Kathryn  
+################################################################################
+rmarkdown::render("c:/repos/useful-code-r/code/reports/report-design.rmd",
+	output_file="c:/repos/useful-code-r/code/reports/report-design.pdf")
 
+system2("open","c:/repos/useful-code-r/code/reports/report-design.pdf")
 
 
 
