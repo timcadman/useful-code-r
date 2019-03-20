@@ -1,0 +1,162 @@
+---
+title: "Trajectories of health inequalities in LifeCycle: draft analysis plan"
+date: "18th February 2019"
+author: "Tim Cadman"
+subparagraph: true
+fontsize: 11pt
+header-includes:
+- \usepackage{booktabs}
+- \usepackage{longtable}
+- \usepackage{array}
+- \usepackage{multirow}
+- \usepackage{wrapfig}
+- \usepackage{float}
+- \usepackage{colortbl}
+- \usepackage{pdflscape}
+- \usepackage{tabu}
+- \usepackage{threeparttable}
+- \usepackage{threeparttablex}
+- \usepackage[normalem]{ulem}
+- \usepackage{makecell}
+- \usepackage{xcolor}
+- \usepackage{titlesec}
+- \usepackage{caption}
+output: 
+ bookdown::pdf_document2:
+  citation_package: biblatex
+  latex_engine: xelatex
+  template: khl_3.tex
+  fig_caption: yes
+bibliography: lc-traj-ineq-ref.bib
+
+---
+```{r, include=FALSE}
+
+## ---- Load packages --------------------------------------------------------------------
+library(dplyr)
+library(knitr)
+library(kableExtra)
+library(captioner)
+
+## ---- Set options-- -------------------------------------------------------------------
+knitr::opts_chunk$set(comment = NA, echo=FALSE, tidy=FALSE)
+## ---- Get data----- -------------------------------------------------------------------
+inventory <- read.csv("c:/repos/lc-trajectories-inequality/data/Inventory for inequalities paper.csv", encoding="UTF-8")
+inventory <- dplyr::rename(inventory, "cohort"="X.U.FEFF.Cohort")
+```
+
+
+# Test
+
+See Figure \@ref(fig:testy) for a test figure.
+
+```{r, testy, fig.cap = "Here is a test figure"}
+x <- rnorm(100)
+plot(x)
+```
+
+
+\newpage
+# Background
+Whilst it is well-established that children from low socio-economic position (SEP) have worse mental and physical health outcomes, the majority of this research is from cross-sectional studies. In the past decade there have been an increasing focus on describing how health inequalities develop and change over childhood, in particular whether they persist, narrow or widen. This is important from a policy perspective as it could highlight key time points to interview. However to date findings have not always been consistent, and for some outcomes very few longitudinal studies have been conducted.
+
+Findings are most consistent for the impact of SEP on body-mass index (BMI). In high-income countries low SEP has been found to correlate with higher BMI from as early as 9 months [@ballon2018], with most studies finding the gap increasing over time [@bramsved2018; @parkes2015; @wijlaars2011; @apouey2016b]. Some studies have reported different findings, e.g. @howe2013 reported stable inequalities in fat mass from ages 9 to 15, whilst @apouey2016a reported a quadratic trajectory of inequality. For low or middle-income countries the opposite effect has been observed, with higher SEP associated with higher BMI and greater BMI increases [@patel2018; @fu2015]
+
+Relatively consistent findings have also been reported for birth length and height: higher SEP is associated with longer birth length across countries [@howe2012; @mccrory2017; @ballon2018]. These differences generally appear to increase [@mati2014; @mccrory2017], though @howe2012 reported that the majority of differences at age 10 are accounted for by differences in birth-length.
+
+However for other outcomes, especially mental health and neurocognitive development longitudinal research is more sparse and findings more varied. Whilst a number of studies have reported higher levels of behavioural/externalising problems in lower SEP children as young as three [@kiernan2008; @kiernan2009], to the best of our knowledge only one study has explicity modelled how this changes over time, finding differences remained stable @howe2013. Socioeconomic differences in internalising symptoms are of smaller magnitude @noonan2018, but there is limited research on how these differences develop over time [elov2012; howe2013].
+
+In terms of cognitive and language development discrepent findings have been reported. Whilst higher SEP is associated with superior reading and language development, some studies have reported these differences remain largely constant [@belfi2014; @vonhip2018], some to decrease [@howe2013], or to show a non-linear pattern of first narrowing and then increasing [@kiefer2012]. These discrepencies may in part be due to the specific cognitive outcome or relate to the education system of the country in which they were conducted.
+
+Significant interactions by sex and ethnicity have also been reported. Greater BMI inequalities have generally been observed for women [@ballon2018; @apouey2016b], whilst @howe2013 only found inequalities in fat mass for women (though cf Bradved who found interaction on BMI inequality by sex) [@bramsved2018]. @hargrove2018 also reported interactions between sex and ethinicity: for example black women had the highest BMI and experienced a steeper increase in BMI (compared to white women of same SEP).   
+
+[Still to review literature: (i) Motor skills, (ii) Expiratory volume, (iii) blood pressure]
+
+# Aims and hypotheses
+The aims of the current study are to replicate and extend previous research by describing trajectories of inequalities for key physical and mental health outcomes within the LifeCycle consortium. The chosen outcomes are:
+
+1. Height
+2. Weight
+3. Blood pressure
+4. Expiratory volume
+5. Motor skills
+6. Language development
+7. Internalising
+8. Externalising
+
+[Complete hypotheses after finishing literature review]
+
+
+# Inventory of variables
+
+I have reviewed the available data in LifeCycle cohorts. My inclusion criterion was that the cohort needed to use the same measure at at least two time points. 
+
+## Height and weight:
+- Waiting for Sido to get back to me about this - he was going to print off a report.
+
+## Expiratory volume
+Four cohorts had FEV-1 data at at least two time points (Table \@ref(tab:respiratory))
+
+
+```{r, respiratory}
+inventory %>%
+filter (Domain == "Respiratory") %>%
+select("Cohort"=cohort, "Available time points"=Time.point) %>%
+kable("latex", booktabs=TRUE, longtable = TRUE, digits = 3, 
+	caption = "Available respiratory data", escape = FALSE) %>%
+kable_styling(position="left", latex_options = "hold_position") %>%
+collapse_rows(columns = 1, latex_hline = "major", valign = "middle") 
+```
+
+
+## Language development
+This was more tricky as there were a number of different measures broadly classified as measuring language development. Expressive language is a high-priority WP6 variable to harmonise, so presumably cohorts will make their own decisions which is the best measure of this. 
+
+#### Table 2: Available data on language development
+```{r}
+inventory %>%
+filter (Domain == "Language") %>%
+select("Cohort"=cohort, Measure, "Available time points"=Time.point) %>%
+arrange(Cohort) %>%
+kable("latex", booktabs=TRUE, longtable = TRUE, digits = 3, align="l") %>%
+kable_styling(position="left") %>%
+collapse_rows(columns=1:2, latex_hline = "custom", custom_latex_hline=1:2,
+  valign = "middle")
+```
+
+
+## Motor skills
+Again there are a range of measures used, and within the WP6 harmonisation process cohorts should decide the most appropriate for gross and fine motor development.
+
+#### Table 3: Available data on motor skills
+```{r}
+inventory %>%
+filter(Domain == "Motor") %>%
+select("Cohort"=cohort, Measure, "Available time points"=Time.point) %>%
+arrange(Cohort) %>%
+kable("latex", booktabs=TRUE, longtable = TRUE, digits = 3) %>%
+kable_styling(position="left") %>%
+collapse_rows(columns=1:2, latex_hline = "custom", custom_latex_hline=1:2,
+  valign = "middle")
+```
+
+
+# Moderation
+There is evidence in the literature that both sex and ethnicity could be moderators. However as you mentioned last time we met ethnicity is recorded quite differently in different cohorts (e.g. asking ethnic background vs asking parent's country of origin). It also isn't well documented - I've struggled to find information on this for many of the cohorts (BiB & ALSPAC are exceptions).  
+
+One option would be to use the "Ethnicity - best guess" variable from the core variables. However we would still need to think about how each of these had been derived to interpret any findings.  
+
+
+
+# Questions for Debbie
+1. Decisions about selection of measures. Will this be determined by cohorts harmonsation decisions?
+2. How/whether to focus on ethnicity/intersectionality
+3. Whether to restrict the range of outcomes (or write two papers?)
+4. Which measure of SEP to use. Education would be simplest? Poverty vs SEP
+5. Worth looking at variables which explain between-cohort differences (e.g. healthcare provision, inequality)
+6. Filling out the project proposal form - which cohorts to include
+7. Practicalities of running the analysis. Via datashield? Via data-sharing agreements? In collaboration?
+
+\newpage
+
+# References
