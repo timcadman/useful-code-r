@@ -51,16 +51,9 @@ $endif$
 \usepackage{microtype}
 \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% I've greyed this out so I can just define myself below
-
-%$if(geometry)$
-%\usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
-%$endif$
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+$if(geometry)$
+\usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
+$endif$
 \usepackage{hyperref}
 $if(colorlinks)$
 \PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
@@ -152,7 +145,7 @@ $else$
 \usepackage{parskip}
 }{% else
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{12pt plus 2pt minus 1pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
 }
 $endif$
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
@@ -252,129 +245,11 @@ $else$
   $endif$
 $endif$
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% This is where I customise the template %
-
-% Set margins
-\usepackage[left=35mm,top=14mm,right=14mm,bottom=21mm]{geometry}
-
-% Define colour for use in headings
-% Here we use marrs
-\usepackage{xcolor}
-\definecolor{customcol}{RGB}{26,127,119}
-
-% Define font size levels
-\newcommand{\fonta}{\fontsize{24}{20}\selectfont}
-\newcommand{\fontb}{\fontsize{19}{21}\selectfont}
-\newcommand{\fontc}{\fontsize{16}{19}\selectfont}
-\newcommand{\fontd}{\fontsize{13}{16}\selectfont}
-
-% Get specific fonts that I need
-\usepackage{fontspec}
-\newfontfamily\headingfont[]{Arnhem-Bold}
-\newfontfamily\Akzidlig[]{AkzidGroProLig.otf}
-\newfontfamily\AkzidMed[]{AkzidGroProMed.otf}
-\newfontfamily\AkzidBol[]{AkzidGroProBol.otf}
-
-% Format title
-\usepackage{titling}
-\setlength{\droptitle}{-5.5em} % Move title up page
-
-\pretitle{\begin{flushleft}\fonta\headingfont\color{customcol}}
-\posttitle{\par\end{flushleft}}
-
-% Gap between title and author
-\renewcommand\maketitlehookb{\vspace{-2em}}
-
-% Format author
-\preauthor{\begin{flushleft}\fontc\Akzidlig}
-\postauthor{\par\end{flushleft}}
-
-% Gap between author and date
-\renewcommand\maketitlehookc{\vspace{-3em}}
-
-% Format date
-\predate{\begin{flushleft}\fontc\Akzidlig}
-\postdate{\par\end{flushleft}}
-
-% Gap between date and table of contents
-\renewcommand\maketitlehookd{\vspace{5em}}
-
-% Remove ToC header
-\makeatletter
-\renewcommand\tableofcontents{%
-    \@starttoc{toc}%
-}
-\makeatother
-
-% Format section headings
-\usepackage{titlesec}
-
-\titleformat{\section}
-    {\color{customcol}\vspace{20pt}\titlerule\vspace{-7pt}\headingfont\fontb\bfseries}
-    {\thesection}{0.5em}
-    {\headingfont}
-
-\titleformat*{\subsection}{\fontsize{13}{16}\AkzidMed}
-\titleformat*{\subsubsection}{\fontsize{13}{16}\Akzidlig\color{customcol}}
-
-% Spacing after titles
-\titlespacing*{\section}{0pt}{19.2pt plus 1ex minus .2ex}{8pt plus .2ex}
-\titlespacing*{\subsection}{0pt}{10pt plus 1ex minus .2ex}{-7pt plus .2ex}
-
-% Format Table of Contents headings
-\usepackage{titletoc}
-\contentsmargin[4cm]{2em} % Affects right text wrap
-
-\titlecontents{section}
-              [1.3em] % Left margin
-              {\vspace{0.5em}} % Space between lines
-              {\AkzidMed\fontd\contentslabel{6mm}} 
-              {\hspace*{0em}}
-              {\titlerule*[0pc]{.}\contentspage} %\titlerule controls dots
-\titlecontents{subsection}
-              [4em] 
-              {\vspace{-1em}}
-              {\Akzidlig\fontd\contentslabel{9mm}}
-              {\hspace*{0em}}
-              {\titlerule*[1pc]{.}\contentspage}
-
-% Change colours of links
-\usepackage{hyperref}
-\hypersetup{
-    colorlinks = true,
-    linkcolor = customcol,
-    citecolor = customcol,
-    urlcolor = customcol,
-    linktocpage = TRUE % Change links to be page numbers not the header
-}
-
-% Format table and figure captions
-\usepackage{caption}
-\renewcommand{\footnotesize}{\fontsize{13pt}{16pt}\selectfont}
-
-\captionsetup[table]{font=footnotesize,
-format=plain,
-justification=RaggedRight,
-singlelinecheck=false,
-labelsep=colon,
-belowskip = 10pt}
-
-\captionsetup[figure]{labelsep=colon,
-font=footnotesize,
-justification=RaggedRight,
-singlelinecheck=false,
-aboveskip = 10pt}
-
-% End of my custom format
-%%%%%%%%%%%%%%%%%%%%%%%%%
-
 $for(header-includes)$
 $header-includes$
 $endfor$
 
 \begin{document}
-
 $if(title)$
 \maketitle
 $endif$
@@ -393,10 +268,7 @@ $if(toc)$
 $if(colorlinks)$
 \hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$black$endif$}
 $endif$
-
-
 \setcounter{tocdepth}{$toc-depth$}
-
 \tableofcontents
 }
 $endif$
@@ -406,13 +278,6 @@ $endif$
 $if(lof)$
 \listoffigures
 $endif$
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Set properties of body text
-\raggedright
-\setmainfont{[AkzidGroProLig.otf]}
-\fontd
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 $body$
 
 $if(natbib)$
