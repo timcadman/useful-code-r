@@ -2,7 +2,7 @@ lavTablePar <- function(object, vartable){
 
 partab <- parameterEstimates(object, standardized=TRUE) %>% 
   filter(op == "=~") %>% 
-  select(Indicator=rhs, Beta=std.all)
+  dplyr::select(Indicator=rhs, Beta=std.all)
 
 varlabs <- vartable$lab[match(as.character(partab$Indicator), as.character(vartable$name))]
 

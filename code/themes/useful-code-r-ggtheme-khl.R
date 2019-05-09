@@ -7,7 +7,7 @@
 ################################################################################
 
 library(ggplot2)
-
+library(showtext)
 ################################################################################
 # 1. Add the fonts we need  
 ################################################################################
@@ -23,15 +23,17 @@ theme_khl <- theme(plot.background = element_rect(fill =scales::alpha("#CCCCCC",
                panel.background = element_rect(fill="white"),  #Background for plot
                panel.grid.major=element_line(colour="grey"), #Major and minor gridlines
                panel.grid.minor=element_line(colour="white"), 
-               plot.title = element_text(hjust = 0, vjust=0, size=10, face="bold"), #Plot title, thought don't tend to use
+               panel.spacing = unit(1, "lines"),
+               plot.title = element_text(hjust = 0, vjust=0, size=11, face="bold"), #Plot title, thought don't tend to use
                text=element_text(size=10), #General text 
-               axis.title.y = element_text(family="AkzidGroProLig", size=10, face="bold", margin = margin(t = 0, r = 10, b = 0, l = 0)), #Axis labels
-               axis.title.x = element_text(family="AkzidGroProLig", size=10, face="bold", margin = margin(t = 10, r = 0, b = 0, l = 0)),
-               axis.text.x = element_text(family="AkzidGroProReg", size=7, margin = margin(t = 4, r=0, b=0, l=0), colour="black"), #Axis text
-               axis.text.y = element_text(family="AkzidGroProReg", size=7, margin = margin(t = 0, r=4, b=0, l=0), colour="black"),
+               axis.title.y = element_text(family="AkzidGroProReg", size=11, margin = margin(t = 0, r = 10, b = 0, l = 0)), #Axis labels
+               axis.title.x = element_text(family="AkzidGroProReg", size=11, margin = margin(t = 10, r = 0, b = 0, l = 0)),
+               axis.text.x = element_text(family="AkzidGroProLig", size=8, margin = margin(t = 4, r=0, b=0, l=0), colour="black"), #Axis text
+               axis.text.y = element_text(family="AkzidGroProLig", size=8, margin = margin(t = 0, r=4, b=0, l=0), colour="black"),
                axis.ticks.length=unit(0.3, "cm"),
                axis.ticks = element_line(colour = "grey"),
-               strip.text.x = element_text(family="AkzidGroProMed", size=8, face="bold"),
+               strip.text.x = element_text(family="AkzidGroProReg", size=11),
+               strip.background = element_blank(),
                legend.background= element_rect(fill=scales::alpha("#CCCCCC", 0.3)), #Legend background colour
                legend.title=element_text(size=8, face="bold"), #Legend title
                legend.text=element_text(size=8), #Legend text
@@ -46,7 +48,7 @@ theme_khl <- theme(plot.background = element_rect(fill =scales::alpha("#CCCCCC",
 # 3. Create palette  
 ################################################################################
 palette_khl <- c("#197d78", "#d79632", "#325573", "#d74632", "#d77896", 
-                 "#827d78", "#4by6be", "#le8c32")
+                 "#827d78", "#4by6be", "#1e8c32")
 
 ################################################################################
 # 4. Create objects holding axis configuration  

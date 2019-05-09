@@ -3,7 +3,6 @@ title: "Trajectories of health inequalities in LifeCycle: draft analysis plan"
 date: "18th February 2019"
 author: "Tim Cadman"
 subparagraph: true
-fontsize: 11pt
 header-includes:
 - \usepackage{booktabs}
 - \usepackage{longtable}
@@ -23,12 +22,9 @@ header-includes:
 - \usepackage{caption}
 output: 
  bookdown::pdf_document2:
-  citation_package: biblatex
   latex_engine: xelatex
   template: khl_3.tex
   fig_caption: yes
-bibliography: lc-traj-ineq-ref.bib
-
 ---
 ```{r, include=FALSE}
 
@@ -46,6 +42,7 @@ inventory <- dplyr::rename(inventory, "cohort"="X.U.FEFF.Cohort")
 ```
 
 
+\newpage
 # Test
 
 See Figure \@ref(fig:testy) for a test figure.
@@ -55,8 +52,6 @@ x <- rnorm(100)
 plot(x)
 ```
 
-
-\newpage
 # Background
 Whilst it is well-established that children from low socio-economic position (SEP) have worse mental and physical health outcomes, the majority of this research is from cross-sectional studies. In the past decade there have been an increasing focus on describing how health inequalities develop and change over childhood, in particular whether they persist, narrow or widen. This is important from a policy perspective as it could highlight key time points to interview. However to date findings have not always been consistent, and for some outcomes very few longitudinal studies have been conducted.
 
@@ -85,8 +80,6 @@ The aims of the current study are to replicate and extend previous research by d
 8. Externalising
 
 [Complete hypotheses after finishing literature review]
-
-
 # Inventory of variables
 
 I have reviewed the available data in LifeCycle cohorts. My inclusion criterion was that the cohort needed to use the same measure at at least two time points. 
@@ -103,7 +96,7 @@ inventory %>%
 filter (Domain == "Respiratory") %>%
 select("Cohort"=cohort, "Available time points"=Time.point) %>%
 kable("latex", booktabs=TRUE, longtable = TRUE, digits = 3, 
-	caption = "Available respiratory data", escape = FALSE) %>%
+	caption = "test test test", escape = FALSE) %>%
 kable_styling(position="left", latex_options = "hold_position") %>%
 collapse_rows(columns = 1, latex_hline = "major", valign = "middle") 
 ```

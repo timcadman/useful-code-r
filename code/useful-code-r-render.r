@@ -18,6 +18,8 @@ library(rmarkdown)
 ################################################################################
 # 1. Set-up  
 ################################################################################
+library(showtext)
+library(extrafont)
 
 ## ---- Point r to pandoc ------------------------------------------------------
 Sys.setenv(RSTUDIO_PANDOC="C:/Users/tc18889/AppData/Local/Pandoc")
@@ -28,7 +30,18 @@ windowsFonts("Arnhem-BlondItalic" = windowsFont("Arnhem-BlondItalic"))
 windowsFonts("Arnhem-Bold" = windowsFont("Arnhem-Bold"))
 windowsFonts("Arnhem-Bolditalic" = windowsFont("Arnhem-Bolditalic"))
 
+AkzidenzGroteskPro-Regular
+
 windowsFonts("AkzidGroProLig" = windowsFont("AkzidGroProLig"))
+windowsFonts("AkzidGroProReg" = windowsFont("AkzidGroProReg"))
+windowsFonts("AkzidGroProMed" = windowsFont("AkzidGroProMed"))
+
+font_add("Arnhem-Blond", "Arnhem-Blond.otf") # Adds fonts to showtext library
+font_add("AkzidGroProLig", "AkzidGroProLig.otf")
+font_add("AkzidGroProReg", "AkzidGroProReg.otf")
+font_add("AkzidGroProMed", "AkzidGroProMed.otf")
+
+showtext_auto() # Globally sets to use showtext in graphs
 
 ## ---- Set up .pdf rendering --------------------------------------------------
 tinytex::install_tinytex()
@@ -61,6 +74,7 @@ system2("open","c:/repos/school-enjoyment-mh/reports/semh-bmi.pdf")
 
 rmarkdown::render("c:/repos/lc-trajectories-inequality/code/lc-traj-ineq-plan.rmd",
 	output_file="c:/repos/lc-trajectories-inequality/reports/plan_19.02.19.pdf")
+
 system2("open","c:/repos/lc-trajectories-inequality/reports/plan_19.02.19.pdf")
 
 ################################################################################
@@ -103,6 +117,13 @@ rmarkdown::render("c:/repos/useful-code-r/code/reports/report-design.rmd",
 system2("open","c:/repos/useful-code-r/code/reports/report-design.pdf")
 
 
+################################################################################
+# Latest SEMH SEM  
+################################################################################
+rmarkdown::render("c:/repos/school-enjoyment-mh/code/semh-analysis-xl-report.Rmd", 
+	output_file="c:/repos/school-enjoyment-mh/reports/semh-analysis-xl-report.pdf")
+
+system2("open","c:/repos/school-enjoyment-mh/reports/semh-analysis-xl-report.pdf")
 
 
 ################################################################################
@@ -114,4 +135,15 @@ rmarkdown::render("C:/repos/stats-learning/code/practice-rmd 13.02.19.rmd",
 system2("open","C:/repos/stats-learning/reports/test.pdf")
 
 
+rmarkdown::render("C:/repos/stats-learning/reports/test_29_03_19.rmd", 
+	output_file="C:/repos/stats-learning/reports/test_29_03_19.pdf")
+system2("open","C:/repos/stats-learning/reports/test_29_03_19.pdf")
+
+################################################################################
+# Constanza 2nd April 2019  
+################################################################################
+rmarkdown::render("c:/repos/life-cycle/wp3/code/alspac_missing_02_04_19.Rmd",
+	output_file = "c:/repos/life-cycle/wp3/reports/alspac_missing_02_04_19.pdf")
+
+system2("open","c:/repos/life-cycle/wp3/reports/alspac_missing_02_04_19.pdf")
 

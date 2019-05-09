@@ -12,11 +12,12 @@ lavTableStruc <- function(object){
 
 tab_struc <- parameterEstimates(object, standardized=TRUE) %>% 
   filter(op == "~") %>%
-  select(rhs, std.all, se, pvalue) 
+  select(lhs, rhs, est, std.all, ci.lower, ci.upper, pvalue) 
 
-colnames(tab_struc) <- c("", "Beta", "Std.Err", "P-value")
+colnames(tab_struc) <- c("Outcome", "", "Coeffiecient", "Beta", "Lower CI", "Upper CI", 
+	                     "P-value")
 
-tab_struc[, 4] <- formatC(tab_struc[, 4], digits = 3, format = "f")
+#tab_struc[, 4] <- formatC(tab_struc[, 4], digits = 3, format = "f")
 
 return(tab_struc)
 

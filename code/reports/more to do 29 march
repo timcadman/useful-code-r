@@ -1,0 +1,15 @@
+bold header
+
+graph margin in pdf
+output graphs at exact size so font is correct size
+
+
+third level header italic
+graphviz font aksident
+increase node so font fits inside
+
+Whatever my bottom level is, use this for node size (excluding axis labels)
+make node outer white
+Make no hyphons in headers/contents
+try making line above header thicker
+put figure headers above
