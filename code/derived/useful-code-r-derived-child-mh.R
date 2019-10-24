@@ -194,7 +194,7 @@ mutate(
    cisr_anx_18 = factor(
                 ifelse(FJCI602 == 1 | FJCI604 == 1 | FJCI605 == 1 | 
                        FJCI606 ==1, 1, 0),
-                labels = c("Yes", "No")),
+                labels = c("No", "Yes")),
    cisr_selfharm_18 = factor(
                      ifelse(FJCI369 == 1, 0, 1),
                      labels = c("No", "Yes")),
@@ -205,7 +205,7 @@ mutate(
 # 4. Drop original variables  
 ################################################################################
 chi_mh.data <- chi_mh.data %>%
-select(aln, qlet, sqd_int_3_mat, sdq_int_6_mat, sdq_int_8_mat, sdq_int_9_mat, 
+dplyr::select(aln, qlet, sqd_int_3_mat, sdq_int_6_mat, sdq_int_8_mat, sdq_int_9_mat, 
        sdq_int_11_mat, sdq_int_13_mat, sdq_int_16_mat, sdq_int_8_sch, 
        sdq_int_11_sch, sqd_ext_3_mat, sqd_ext_6_mat, sqd_ext_8_mat, 
        sqd_ext_9_mat, sqd_ext_11_mat, sqd_ext_13_mat, sqd_ext_16_mat, 
@@ -215,5 +215,3 @@ select(aln, qlet, sqd_int_3_mat, sdq_int_6_mat, sdq_int_8_mat, sdq_int_9_mat,
        cisr_selfharm_18, cisr_dep_18, mfq_10_chi_age, mfq_12_chi_age, 
        mfq_13_chi_age, mfq_16_chi_age, mfq_17_chi_age, mfq_18_chi_age, 
        mfq_21_chi_age, mfq_22_chi_age, mfq_23_chi_age)
-
-save(chi_mh.data, file = "z:/projects/ieu2/p6/021/working/data/chi_mh.RData")

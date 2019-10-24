@@ -29,7 +29,8 @@ data(current)
 mat_cov.varlist <- subset(current, name %in% c("c645a", "h470", "b_sc_m", "b594", 
 	"e424", "f244", "p2024", "r5024", "f306", "f900", "b721", "b665", 
 	"mz028b", "b032", "b300", "c064", "f242a", "g322a", "h232", "h232a", "d536a", 
-	"f593"))
+	"f593", "c520", "c521", "c522", "c523", "c524", "f800", "f801", "f802",
+  "f803", "f804"))
 
 mat_cov_mast.data <- extractVars(mat_cov.varlist, adult_only = TRUE)
 
@@ -60,7 +61,12 @@ mutate(
 	              labels = c("Homeowner", "Not homeowner")),
     mat_neighbourhood = factor(
     	                  ifelse(f900 <= 2, 0, 1),
-	                      labels = c("Good neighbourhood", "Bad neighbourhood")))    
+	                      labels = c("Good neighbourhood", "Bad neighbourhood")),
+    mat_hardship_preg_cont = 20 - c520 - c521 - c522 - c523 - c524,
+    mat_hardship_preg_bin = ifelse(mat_hardship_preg_cont >= 5, 1, 0),
+    mat_hardship_9_cont = 20 - f800 - f801 - f802 - f803 - f804,
+    mat_hardship_9_bin = ifelse(mat_hardship_9_cont >= 5, 1, 0))
+
 
 ## ---- Financial problems -------------------------------------------------------
 
@@ -129,9 +135,7 @@ mutate(mat_physpart = factor(
 ################################################################################
 
 mat_cov.data <- mat_cov.data %>%
-select(aln, mat_ed, income, mat_sclass, mat_finprob_early, 
+dplyr::select(aln, mat_ed, income, mat_sclass, mat_finprob_early, 
 	   mat_finprob_late, mat_dwell, mat_neighbourhood, mat_drinkpreg, mat_smokepreg, 
 	   mat_age, mat_parity, mat_intent, mat_infection, mat_physpart, gran_hisdep, 
-	   mat_martcon)
-
-save(mat_cov.data, file = "z:/projects/ieu2/p6/021/working/data/mat_cov.RData")
+	   mat_martcon, mat_hardship_preg_bin, mat_hardship_9_bin)

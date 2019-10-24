@@ -132,5 +132,3 @@ Hmisc::describe(pat_pers.data$pat_pers_bin)
 ################################################################################
 pat_pers.data <- pat_pers.data %>%
 select(aln, pat_pers_symp, pat_pers_bin)
-
-save(pat_pers.data, file = "z:/projects/ieu2/p6/021/working/data/pat_pers.RData")

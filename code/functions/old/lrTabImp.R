@@ -11,23 +11,18 @@
 # Argument:
 #
 # object: glm object
+# pstats: either "pvalues" for separate column, "pstars" for stars appended to
+# odds ratio, or "none" for none.
 #
 # output: dataframe with OR (lower CI - upper CI)
 
-lrTabImp <- function(object){
+lrTabImp <- function(object, pstats){
 
 ## ---- Pool imputed data ------------------------------------------------------
 object_p <- pool(object)
 
 ## ---- Extract the stats -----------------------------------------------------
 npred <- (length(object_p$pooled$estimate) - 1)
-
-out <- data.frame(matrix(NA, 
-	nrow = npred, 
-	ncol = 2))
-
-colnames(out) <- c("variable", "odds ratio (95 % CI)")
-out[, 1] <- attributes(object_p$pooled)$row.names[2: (npred + 1)]
 
 stats <- round(summary(object_p, conf.int = TRUE, conf.level = 0.90,
  exponentiate = TRUE), 2)
@@ -54,15 +49,60 @@ else if (p_values[i] < 0.05 & i >= 0.01){
 else{
 	p_list[i] = ""
 }
+
+}
+## ---- Output -----------------------------------------------------------------
+if(pstats == "pvalues"){
+
+out <- data.frame(matrix(NA, 
+	nrow = npred, 
+	ncol = 3))
+
+colnames(out) <- c("variable", "odds ratio (95 % CI)", "pvalue")
+out[, 1] <- attributes(object_p$pooled)$row.names[2: (npred + 1)]
+out[, 2] <- paste(or, 
+	          paste(
+	            paste0("(", ci_low),
+	            "-",
+	            paste0(ci_high, ")")),
+	          sep = " ")
+out[, 3] <- p_values
+
 }
 
-## ---- Paste it all togethers ------------------------------------------------
+else if(pstats == "stars"){
+
+out <- data.frame(matrix(NA, 
+	nrow = npred, 
+	ncol = 2))
+
+colnames(out) <- c("variable", "odds ratio (95 % CI)")
+out[, 1] <- attributes(object_p$pooled)$row.names[2: (npred + 1)]
 out[, 2] <- paste(or, 
 	          paste(
 	            paste0("(", ci_low),
 	            "-",
 	            paste0(ci_high, ")", p_list)),
 	          sep = " ")
+
+}
+
+else if(pstats == "none"){
+
+out <- data.frame(matrix(NA, 
+	nrow = npred, 
+	ncol = 2))
+
+colnames(out) <- c("variable", "odds ratio (95 % CI)")
+out[, 1] <- attributes(object_p$pooled)$row.names[2: (npred + 1)]
+out[, 2] <- paste(or, 
+	          paste(
+	            paste0("(", ci_low),
+	            "-",
+	            paste0(ci_high, ")")),
+	          sep = " ")
+
+}
 
 return(out)
 

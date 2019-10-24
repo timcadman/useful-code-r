@@ -146,12 +146,10 @@ mutate(
 # 5. Drop original variables  
 ################################################################################
 mat_epds.data <- mat_epds.data %>%
-select(aln, mat_epds_b_sum, mat_epds_c_sum, mat_epds_e_sum, mat_epds_f_sum,
+dplyr::select(aln, mat_epds_b_sum, mat_epds_c_sum, mat_epds_e_sum, mat_epds_f_sum,
 	mat_epds_g_sum, mat_epds_h_sum, mat_epds_k_sum, mat_epds_l_sum, 
 	mat_epds_n_sum, mat_epds_r_sum, mat_epds_b_bin, mat_epds_c_bin, 
 	mat_epds_e_bin, mat_epds_f_bin, mat_epds_g_bin, mat_epds_h_bin, 
 	mat_epds_k_bin, mat_epds_l_bin, mat_epds_n_bin, mat_epds_r_bin, 
 	mat_epds_preg_av, mat_epds_post_av, mat_epds_presch_av, mat_epds_sch_av, 
 	mat_epds_life_av)
-
-save(mat_epds.data, file = "z:/projects/ieu2/p6/021/working/data/mat_epds.RData")

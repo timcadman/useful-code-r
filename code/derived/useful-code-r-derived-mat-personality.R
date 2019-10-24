@@ -130,6 +130,3 @@ mutate(mat_pers_symp = ifelse(is.na(mat_sup_tot), NA,
 ################################################################################
 mat_pers.data <- mat_pers.data %>%
 select(aln, mat_pers_symp, mat_pers_bin)
-
-save(mat_pers.data, 
-	file = "z:/projects/ieu2/p6/021/working/data/mat_pers.RData")

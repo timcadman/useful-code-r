@@ -28,7 +28,8 @@ data(current)
 ################################################################################
 pat_cov.varlist <- subset(current, name %in% c("pb184", "pc224", "pd244", 
 	"pm2024", "pp5024", "pc996", "pb100", "pb078", "pc102", "pc222a", "pd242a", 
-	"pe322a", "pf5022", "c_sc_ptnr_pp", "c666a"))
+	"pe322a", "pf5022", "c_sc_ptnr_pp", "c666a", "pd680", "pd681", "pd682", 
+    "pd683", "pd684"))
 
 pat_cov_mast.data <- extractVars(pat_cov.varlist, adult_only = TRUE)
 
@@ -53,13 +54,15 @@ mutate(
 		           	          "Low: Non-manual, partly and unskilled")),
     pat_ed = factor(
     	       ifelse(c666a <= 3, 1, 0),
-    	       labels = c("Low: CSE, vocational or O-level",
-    	       	          "High: A-level or Degree")),
+    	       labels = c("High: A-level or Degree", 
+                          "Low: CSE, vocational or O-level")),
     pat_finprob = ifelse(pb184 <= 4, 1, 0),
     pat_finprob2 = ifelse(pc224 <= 4, 1, 0),
     pat_finprob8 = ifelse(pd244 <= 4, 1, 0),
     pat_finprob110 = ifelse(pm2024 <= 3, 1, 0),
-    pat_finprob134 = ifelse(pp5024 <= 3, 1, 0))
+    pat_finprob134 = ifelse(pp5024 <= 3, 1, 0),
+    pat_hardship_9_cont = 20 - pd680 - pd681 - pd682 - pd683 - pd684,
+    pat_hardship_9_bin = ifelse(pat_hardship_9_cont >= 5, 1, 0))
 
 ## ---- Financial problems -------------------------------------------------------
 
@@ -116,6 +119,4 @@ mutate(
 pat_cov.data <- pat_cov.data %>%
 select(aln, pat_sclass, pat_ed, pat_finprob_early, pat_finprob_late, 
 	   pat_age, pat_drinkpreg, pat_smokepreg, 
-     pat_epds_post, pat_epds_post_b, pat_physpart)
-
-save(pat_cov.data, file = "z:/projects/ieu2/p6/021/working/data/pat_cov.RData")
+     pat_epds_post, pat_epds_post_b, pat_physpart, pat_hardship_9_bin)
