@@ -70,6 +70,18 @@ install.packages("statar")
 install.packages("summarytools")
 install.packages("labelled")
 install.packages("lspline")
+install.packages("lifecycleProject", 
+	repos='https://registry.molgenis.org/repository/R/', 
+	dependencies = TRUE)
+install.packages('opal', repos='http://cran.obiba.org', type='source')
+install.packages('dsBaseClient', repos='http://cran.obiba.org', type='source')
+install_github("datashield/dsBetaTestClient", ref = "master", force = TRUE)
+install.packages("metafor")
+install.packages('datashieldclient', repos=c(getOption('repos'), 'http://cran.datashield.org'), dependencies=TRUE)
+install.packages("miceadds")
+install.packages("zscorer")
+install.packages("gsubfn")
+install.packages("PHEindicatormethods")
 
 ################################################################################
 # 3. Import and register fonts  

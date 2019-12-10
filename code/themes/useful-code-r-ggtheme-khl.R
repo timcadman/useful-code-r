@@ -27,7 +27,7 @@ theme_khl <- theme(plot.background = element_rect(fill =scales::alpha("#CCCCCC",
                axis.ticks = element_line(colour = "grey"),
                strip.text.x = element_text(family="Akzidenz Grotesk Reg", size=11),
                strip.background = element_blank(),
-               legend.background= element_rect(fill=scales::alpha("#CCCCCC", 0.3)), #Legend background colour
+               legend.background= element_rect(fill=scales::alpha("#CCCCCC", 0.03)), #Legend background colour
                legend.title=element_text(size=8, face="bold"), #Legend title
                legend.text=element_text(size=8), #Legend text
                legend.position="top", #Legend position

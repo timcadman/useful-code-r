@@ -58,6 +58,20 @@ dplyr::filter(count > 1)
 long_data %<>%
 ungroup()
 
+## Add centred age variable
+mean_int <- data.frame(matrix(NA, nrow = length(unique(long_data$occasion)), 
+	                              ncol = 2))
+
+colnames(mean_int) <- c("occasion", "mean")
+
+mean_int$occasion <- tapply(long_data$age, long_data$occasion, mean, na.rm = TRUE)
+mean_int <- arrange(mean_int, mean)
+
+long_data$age_cen <- long_data$age - mean_int$occasion[1]
+
+long_data %<>%
+arrange(., id)
+
 return(long_data)
 
 }
