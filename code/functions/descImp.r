@@ -24,7 +24,7 @@ require(tableone)
 
 source("./useful-code-r/code/functions/match-lab.r")
 
-descImp <- function(imputed, vars, labs = NULL, factvars = NULL){
+descImp <- function(imputed, vars, labs = NULL, factvars = NULL, format = "p"){
 
 ## ---- Rename variable indicating original dataset ----------------------------
 imputed %<>%
@@ -53,7 +53,7 @@ tmp <- CreateTableOne(data = imputed,
 out[[2]] <- print(tmp, quote = FALSE, 
                        noSpaces = TRUE, 
                        printToggle = FALSE,
-                       format = "p",
+                       format = format,
                        test = FALSE,
                        varLabels = TRUE)
 
