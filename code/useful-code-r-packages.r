@@ -26,7 +26,9 @@ install.packages("ltm")
 install.packages("gridExtra")
 install.packages("latticeExtra")
 install.packages("psych")
+install.packages("rlang")
 install.packages("devtools")
+install.packages("Rtools")
 library(devtools)
 install_github("explodecomputer/alspac")
 install.packages("lavaan", repos = "http://www.da.ugent.be", type = "source")
@@ -82,6 +84,11 @@ install.packages("miceadds")
 install.packages("zscorer")
 install.packages("gsubfn")
 install.packages("PHEindicatormethods")
+install.packages("sjmisc")
+devtools::install_github("thlytras/rspiro")
+install.packages("igraph")
+install.packages("ggraph")
+
 
 ################################################################################
 # 3. Import and register fonts  

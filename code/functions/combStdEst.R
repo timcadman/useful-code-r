@@ -2,7 +2,7 @@ require(dplyr)
 require(magrittr)
 require(semTools)
 
-combStdEst <- function(object, runmiobj, digits = 2){
+combStdEst <- function(object, digits = 2){
 
 varnum <- length(object[[1]]@Fit@est)
 
@@ -41,8 +41,8 @@ mutate(lhs = par_names$lhs,
 	op = par_names$op,
        std.all = as.numeric(mi.meld(std.tab, se.tab, byrow = FALSE)[[1]]),
        se = as.numeric(mi.meld(std.tab, se.tab, byrow = FALSE)[[2]]),
-       ci.lower = std.all + se * qt(0.025, model_df),
-       ci.upper = std.all + se * qt(0.975, model_df),
+       ci.lower = std.all - se * 1.96,
+       ci.upper = std.all + se * 1.96,
        statistic = std.all / se,
        pvalue = 2 * pt(abs(statistic), model_df, lower.tail = FALSE))
 	   

@@ -54,7 +54,7 @@ pval <- round(attributes(stat$ContTable)$pValues[1], 2)
 ## ---- Get stats for chi squared ----------------------------------------------
 else{
 
-stat <- CrossTable(v_dep, v_ind, chisq = TRUE)
+stat <- CrossTable(pull(v_dep), pull(v_ind), chisq = TRUE)
 
 n.1 <- stat[[1]][2]
 n.2 <- stat[[1]][4]
