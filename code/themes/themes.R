@@ -77,5 +77,7 @@ theme_cor <- theme(
 
 ## ---- Forest plot -------------------------------------------------------------------
 theme_forest <- theme(
-  panel.grid.major.x = element_blank()) 
+  legend.position = "none",
+  panel.grid.major.x = element_blank(), 
+  axis.title.y = element_blank()) 
 
