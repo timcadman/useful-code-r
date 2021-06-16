@@ -8,10 +8,12 @@
 
 names_neat <- tibble(
   cohort = c(
-    "alspac", "bib", "chop", "dnbc", "eden", "elfe", "gecko", "genr", "inma", 
-    "moba", "ninfea", "nfbc66", "nfbc86", "raine", "rhea", "sws", "combined"),
+    "alspac", "bib", "chop", "dnbc", "eden", "elfe", "gecko", "genr", "hgs", 
+    "inma", "moba", "ninfea", "nfbc66", "nfbc86", "raine", "rhea", "sws", 
+    "combined"),
   cohort_neat = c(
-    "ALSPAC", "BiB", "CHOP", "DNBC", "EDEN", "ELFE", "GECKO", "GENR", "INMA", 
-    "MoBa", "NINFEA", "NFBC66", "NFBC86", "Raine", "RHEA", "SWS", "Pooled results")
+    "ALSPAC", "BiB", "CHOP", "DNBC", "EDEN", "ELFE", "GECKO", "GENR", "HGS", 
+    "INMA", "MoBa", "NINFEA", "NFBC66", "NFBC86", "Raine", "RHEA", "SWS", 
+    "Pooled results")
   )
   
