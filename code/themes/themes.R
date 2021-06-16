@@ -81,3 +81,8 @@ theme_forest <- theme(
   panel.grid.major.x = element_blank(), 
   axis.title.y = element_blank()) 
 
+
+## ---- Widths for saving plots -------------------------------------------------------------------
+word_full <- 15.92
+
+
