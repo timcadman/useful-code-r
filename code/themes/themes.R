@@ -9,80 +9,176 @@
 library(ggplot2)
 
 
-## ---- Palette -------------------------------------------------------------------
-palette_std <- c("#264653", "#2a9d8f", "#E9C46A", "#F4A261", "#E76F51", "#000000")
+## ---- Palette ----------------------------------------------------------------
+palette_std <- c("#264653", "#2a9d8f", "#E9C46A", "#F4A261", "#E76F51", 
+  "#000000")
 
 
-## ---- Standard theme -------------------------------------------------------------------
+## ---- Standard theme ---------------------------------------------------------
 theme_std <- theme(
-  plot.background = element_rect(fill =scales::alpha("#CCCCCC", 0.3)),  #Background outside of plot
-  panel.background = element_rect(fill="white"),  #Background for plot
-  panel.grid.major=element_line(colour="grey"), #Major and minor gridlines
-  panel.grid.minor=element_line(colour="white"), 
+  plot.background = element_rect(fill =scales::alpha("#CCCCCC", 0.3)),  
+  panel.background = element_rect(fill="white"), 
+  panel.grid.major = element_line(colour="grey"), 
+  panel.grid.minor = element_line(colour="white"), 
   panel.spacing = unit(1, "lines"),
-  plot.title = element_text(family = "avenir-book", hjust = 0.5, vjust=0, size=12, face="bold"), #Plot title, thought don't tend to use
-  text=element_text(family = "avenir-book", size=9), #General text 
-  axis.title.y = element_text(family = "avenir-book", size=14, margin = margin(t = 0, r = 10, b = 0, l = 0)), #Axis labels
-  axis.title.x = element_text(family = "avenir-book", size=14, margin = margin(t = 10, r = 0, b = 0, l = 0)),
-  axis.text.x = element_text(family = "avenir-book", size=11, margin = margin(t = 4, r=0, b=0, l=0), colour="black"), #Axis text
-  axis.text.y = element_text(family = "avenir-book", size=11, margin = margin(t = 0, r=4, b=0, l=0), colour="black"),
+  plot.title = element_text(
+    family = "avenir-book", 
+    hjust = 0.5, 
+    vjust = 0, size = 12, face = "bold"), 
+  text = element_text(family = "avenir-book", size = 9), 
+  axis.title.y = element_text(
+    family = "avenir-book", 
+    size = 14, margin = margin(t = 0, r = 10, b = 0, l = 0)), 
+  axis.title.x = element_text(
+    family = "avenir-book", 
+    size = 14, 
+    margin = margin(t = 10, r = 0, b = 0, l = 0)),
+  axis.text.x = element_text(
+    family = "avenir-book", 
+    size = 11, 
+    margin = margin(t = 4, r = 0, b = 0, l = 0), 
+    colour = "black"), 
+  axis.text.y = element_text(
+    family = "avenir-book", 
+    size = 11, 
+    margin = margin(t = 0, r = 4, b = 0, l = 0), colour = "black"),
   axis.ticks.length=unit(0.3, "cm"),
   axis.ticks = element_line(colour = "grey"),
   strip.text.x = element_text(family = "avenir-book", size = 8, face = "bold"),
   strip.background = element_blank(),
-  legend.background= element_rect(fill=scales::alpha("#CCCCCC", 0.03)), #Legend background colour
-  legend.title=element_text(family = "avenir-book", size=8, face="bold"), #Legend title
-  legend.text=element_text(family = "avenir-book", size=8), #Legend text
-  legend.position="right", #Legend position
-  legend.direction="vertical", #Legend stacking
-  legend.justification = "left", #Left justify legend
-  legend.key.width = unit(3, "line"), #Make amount of line displayed in legend longer
-  legend.margin=margin(t=0.2, r=0, b=0.2, l=0, unit="cm"), #Margin around legend
+  legend.background = element_rect(fill = scales::alpha("#CCCCCC", 0.03)), 
+  legend.title = element_text(family = "avenir-book", size = 8, face = "bold"), 
+  legend.text = element_text(family = "avenir-book", size = 8), 
+  legend.position = "right", 
+  legend.direction = "vertical", 
+  legend.justification = "left", 
+  legend.key.width = unit(3, "line"), 
+  legend.margin = margin(t = 0.2, r = 0, b = 0.2, l = 0, unit = "cm"), 
   plot.margin = unit(c(0.5, 0.5, 0.2, 0.5),"cm"),
-  panel.grid.minor.y=element_blank(),
-  panel.grid.major.y=element_blank())
+  panel.grid.minor.y = element_blank(),
+  panel.grid.major.y = element_blank())
 
 
 ## ---- Half violin plot -------------------------------------------------------------------
 theme_hv <- theme(
   legend.position = "none",
-  panel.grid.major.y=element_line(colour="grey"), 
-  panel.grid.major.x=element_line(colour="white"),
-  axis.ticks.x=element_blank(), 
-  axis.text.x = element_text(family = "avenir-book", size=10, margin = margin(t = 4, r=0, b=0, l=0), colour="black"), #Axis text
-  axis.text.y = element_text(family = "avenir-book", size=10, margin = margin(t = 0, r=4, b=0, l=0), colour="black"),
-  axis.title.y = element_text(family = "avenir-book", size=12, margin = margin(t = 0, r = 10, b = 0, l = 0)), #Axis labels
-  axis.title.x = element_text(family = "avenir-book", size=12, margin = margin(t = 10, r = 0, b = 0, l = 0))
+  panel.grid.major.y = element_line(colour = "grey"), 
+  panel.grid.major.x = element_line(colour = "white"),
+  axis.ticks.x =element_blank(), 
+  axis.text.x = element_text(
+    family = "avenir-book", 
+    size = 10, 
+    margin = margin(t = 4, r = 0, b = 0, l = 0), 
+    colour="black"),
+  axis.text.y = element_text(
+    family = "avenir-book", 
+    size=10, 
+    margin = margin(t = 0, r = 4, b = 0, l = 0), 
+    colour = "black"),
+  axis.title.y = element_text(
+    family = "avenir-book", 
+    size = 12, 
+    margin = margin(t = 0, r = 10, b = 0, l = 0)), 
+  axis.title.x = element_text(
+    family = "avenir-book", 
+    size = 12, 
+    margin = margin(t = 10, r = 0, b = 0, l = 0))
 )
 
 
 ## ---- Correlation/heat map -------------------------------------------------------------------
 theme_cor <- theme(
-  plot.title = element_text(family = "avenir-book", hjust = 0.5, vjust=0, size=12, face="bold"), #Plot title, thought don't tend to use
-  text=element_text(family = "avenir-book", size=9), #General text 
-  axis.title.y = element_text(family = "avenir-book", size=14, margin = margin(t = 0, r = 10, b = 0, l = 0)), #Axis labels
-  axis.title.x = element_text(family = "avenir-book", size=14, margin = margin(t = 10, r = 0, b = 0, l = 0)),
-  axis.text.x = element_text(family = "avenir-book", size=11, margin = margin(t = 4, r=0, b=0, l=0), colour="black"), #Axis text
-  axis.text.y = element_text(family = "avenir-book", size=11, margin = margin(t = 0, r=4, b=0, l=0), colour="black"),
+  plot.title = element_text(
+    family = "avenir-book", 
+    hjust = 0.5, 
+    vjust = 0, 
+    size = 12, 
+    face = "bold"), 
+  text = element_text(family = "avenir-book", size=9), 
+  axis.title.y = element_text(
+    family = "avenir-book", 
+    size = 14, 
+    margin = margin(t = 0, r = 10, b = 0, l = 0)), 
+  axis.title.x = element_text(
+    family = "avenir-book", 
+    size = 14, 
+    margin = margin(t = 10, r = 0, b = 0, l = 0)),
+  axis.text.x = element_text(
+    family = "avenir-book", 
+    size = 11, 
+    margin = margin(t = 4, r = 0, b = 0, l = 0), colour="black"),
+  axis.text.y = element_text(
+    family = "avenir-book", 
+    size = 11, 
+    margin = margin(t = 0, r = 4, b = 0, l = 0), colour="black"),
   strip.text.x = element_text(family = "avenir-book", size = 8, face = "bold"),
-  legend.background= element_rect(fill=scales::alpha("#CCCCCC", 0.03)), #Legend background colour
-  legend.title=element_text(family = "avenir-book", size=8, face="bold"), #Legend title
-  legend.text=element_text(family = "avenir-book", size=8), #Legend text
-  legend.position="right", #Legend position
-  legend.direction="vertical", #Legend stacking
-  legend.justification = "left", #Left justify legend
-  legend.key.width = unit(3, "line"), #Make amount of line displayed in legend longer
-  legend.margin=margin(t=0.2, r=0, b=0.2, l=0, unit="cm")) #Margin around legend
+  legend.background = element_rect(fill=scales::alpha("#CCCCCC", 0.03)), 
+  legend.title = element_text(family = "avenir-book", size=8, face="bold"), 
+  legend.text = element_text(family = "avenir-book", size=8), 
+  legend.position = "right", 
+  legend.direction = "vertical", 
+  legend.justification = "left", 
+  legend.key.width = unit(3, "line"), 
+  legend.margin = margin(t = 0.2, r = 0, b = 0.2, l = 0, unit = "cm")) 
 
 
-## ---- Forest plot -------------------------------------------------------------------
+## ---- Forest plot ------------------------------------------------------------
 theme_forest <- theme(
   legend.position = "none",
   panel.grid.major.x = element_blank(), 
   axis.title.y = element_blank()) 
 
 
+## ---- Stacked bar chart ------------------------------------------------------
+theme_bar_stack <- theme(
+  legend.position = "top",
+  legend.justification =  "left",
+  legend.title = element_blank(),
+  panel.grid.major.y = element_line(colour = "grey"), 
+  panel.grid.major.x = element_line(colour = "white"),
+  axis.ticks.x =element_blank(), 
+  axis.text.x = element_text(
+    angle = 90, 
+    vjust = 0.5, 
+    hjust = 1),
+  axis.title.x = element_blank()
+)
+
+## ---- Modification for smaller font in word ----------------------------------
+theme_word <- theme(
+  plot.title = element_text(
+    family = "avenir-book", 
+    hjust = 0.5, 
+    vjust = 0, size = 9, face = "bold"), 
+  text = element_text(family = "avenir-book", size = 9), 
+  axis.title.y = element_text(
+    family = "avenir-book", 
+    size = 9, margin = margin(t = 0, r = 10, b = 0, l = 0)), 
+  axis.title.x = element_text(
+    family = "avenir-book", 
+    size = 9, 
+    margin = margin(t = 10, r = 0, b = 0, l = 0)),
+  axis.text.x = element_text(
+    family = "avenir-book", 
+    size = 7, 
+    margin = margin(t = 4, r = 0, b = 0, l = 0), 
+    colour = "black"), 
+  axis.text.y = element_text(
+    family = "avenir-book", 
+    size = 7, 
+    margin = margin(t = 0, r = 4, b = 0, l = 0), colour = "black"),
+  strip.text.x = element_text(family = "avenir-book", size = 9, face = "bold"),
+  legend.title = element_text(family = "avenir-book", size = 9, face = "bold"), 
+  legend.text = element_text(family = "avenir-book", size = 7), 
+  legend.key.size = unit(0.3, "cm"), 
+  legend.key.width = unit(0.5, "cm"),
+  legend.margin = margin(t = 0.2, r = 0, b = 0.2, l = 0, unit = "cm"), 
+  plot.margin = unit(c(0.5, 0.5, 0.2, 0.5),"cm"), 
+  legend.direction = "horizontal")
+
+
 ## ---- Widths for saving plots -------------------------------------------------------------------
-word_full <- 15.92
+word_full <- 18
+word_half <- 8.8
 
 
