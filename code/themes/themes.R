@@ -211,11 +211,6 @@ theme_f2 <- theme(
       margin = margin(t = 4, r = 0, b = 0, l = 0), 
       colour = "black"))
 
-  , 
-  panel.margin = unit(c(-0.1,-0.1,-0.1,-0.1), "mm"), 
-  plot.margin = unit(c(5,0,5,0.01), "mm")
-)
-
 
 ## ---- Widths for saving plots -------------------------------------------------------------------
 word_full <- 18
