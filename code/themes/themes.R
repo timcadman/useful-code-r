@@ -177,6 +177,46 @@ theme_word <- theme(
   legend.direction = "horizontal")
 
 
+## ---- Theme forest 2 -------------------------------------------------------------------
+
+theme_f2 <- theme(
+  plot.title = element_blank(), 
+  text = element_text(family = "avenir-book", size = 7), 
+  strip.text.x = element_text(family = "avenir-book", size = 9, face = "bold"),
+  axis.line = element_blank(), 
+  axis.ticks = element_blank(), 
+  axis.ticks.length = unit(0.0001, "mm"),
+  axis.ticks.margin = unit(c(0,0,0,0), "lines"), 
+  legend.position = "none", 
+  panel.background = element_rect(fill = "transparent"), 
+  panel.border = element_blank(), 
+  panel.grid.major = element_line(colour="white"), 
+  panel.grid.minor = element_line(colour="white"), 
+  axis.title.x = element_text(
+      family = "avenir-book", 
+      size = 9, 
+      margin = margin(t = 10, r = 0, b = 0, l = 0)),
+    axis.text.x = element_text(
+      family = "avenir-book", 
+      size = 7, 
+      margin = margin(t = 4, r = 0, b = 0, l = 0), 
+      colour = "black"), 
+  axis.title.y = element_text(
+      family = "avenir-book", 
+      size = 9, 
+      margin = margin(t = 10, r = 0, b = 0, l = 0)),
+  axis.text.y = element_text(
+      family = "avenir-book", 
+      size = 7, 
+      margin = margin(t = 4, r = 0, b = 0, l = 0), 
+      colour = "black"))
+
+  , 
+  panel.margin = unit(c(-0.1,-0.1,-0.1,-0.1), "mm"), 
+  plot.margin = unit(c(5,0,5,0.01), "mm")
+)
+
+
 ## ---- Widths for saving plots -------------------------------------------------------------------
 word_full <- 18
 word_half <- 8.8
