@@ -47,7 +47,7 @@ theme_std <- theme(
     margin = margin(t = 0, r = 4, b = 0, l = 0), colour = "black"),
   axis.ticks.length=unit(0.3, "cm"),
   axis.ticks = element_line(colour = "grey"),
-  strip.text.x = element_text(family = "avenir-book", size = 8, face = "bold"),
+  strip.text.x = element_text(family = "avenir-book", size = 11, face = "bold"),
   strip.background = element_blank(),
   legend.background = element_rect(fill = scales::alpha("#CCCCCC", 0.03)), 
   legend.title = element_text(family = "avenir-book", size = 8, face = "bold"), 
