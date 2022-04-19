@@ -16,5 +16,4 @@ names_neat <- tibble(
     "ALSPAC", "BiB", "CHOP", "DNBC", "EDEN", "EDEN Nancy", "EDEN Poitiers", 
     "ELFE", "GECKO", "GENR", "HGS", "INMA", "INMA Gipuzkoa", "INMA Sabadell", 
     "INMA Valencia", "MoBa", "NINFEA", "NFBC66", "NFBC86", "Raine", "RHEA", "SWS", 
-    "Pooled results")
-  )
+    "Combined"))

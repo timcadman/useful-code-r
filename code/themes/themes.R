@@ -181,7 +181,6 @@ theme_word <- theme(
 
 
 ## ---- Theme forest 2 -------------------------------------------------------------------
-
 theme_f2 <- theme(
   plot.title = element_blank(), 
   text = element_text(family = "avenir-book", size = 7), 
@@ -214,9 +213,19 @@ theme_f2 <- theme(
       margin = margin(t = 4, r = 0, b = 0, l = 0), 
       colour = "black"))
 
+## ---- Theme for tight fitting plots ------------------------------------------
+theme_tight <- theme(
+  plot.margin = unit(c(t = 0.2, r = 0.2, b = 0.2, l = 0.2),"cm"), 
+  axis.text.x = element_text(margin = margin(t = 0, r = 0, b = 0, l = 0)), 
+  axis.text.y = element_text(margin = margin(t = 0, r = 0, b = 0, l = -2))
+)
 
-## ---- Widths for saving plots -------------------------------------------------------------------
+
+## ---- Widths for saving plots ------------------------------------------------
 word_full <- 18
 word_half <- 8.8
+word_third <- 5.8
+word_land <- 29.7
+word_land_half <- (word_land /2) - 0.2
 
 
