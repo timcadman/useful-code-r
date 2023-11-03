@@ -16,4 +16,9 @@ names_neat <- tibble(
     "ABCD", "ALSPAC", "BiB", "CHOP", "DNBC", "EDEN", "EDEN Nancy", "EDEN Poitiers", 
     "ELFE", "GECKO", "GENR", "HGS", "INMA", "INMA Gipuzkoa", "INMA Sabadell", 
     "INMA Valencia", "MoBa", "NINFEA", "NFBC66", "NFBC86", "Raine", "RHEA", "SWS", 
-    "Combined"))
+    "Combined"), 
+  country = c(
+    "Netherlands", "UK", "UK", "German, Belgium, Italy, Poland & Spain", "Denmark", "France", "France", "France", 
+    "France", "Netherlands", "Netherlands", "Greece", "Spain", "Spain", "Spain", 
+    "Spain", "Norway", "Italy", "Finland", "Finland", "Australia", "Greece", "UK", 
+    ""))
