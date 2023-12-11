@@ -18,7 +18,7 @@ names_neat <- tibble(
     "INMA Valencia", "MoBa", "NINFEA", "NFBC66", "NFBC86", "Raine", "RHEA", "SWS", 
     "Combined"), 
   country = c(
-    "Netherlands", "UK", "UK", "German, Belgium, Italy, Poland & Spain", "Denmark", "France", "France", "France", 
+    "Netherlands", "UK", "UK", "Multiple", "Denmark", "France", "France", "France", 
     "France", "Netherlands", "Netherlands", "Greece", "Spain", "Spain", "Spain", 
     "Spain", "Norway", "Italy", "Finland", "Finland", "Australia", "Greece", "UK", 
     ""))
