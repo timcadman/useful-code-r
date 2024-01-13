@@ -14,11 +14,11 @@ names_neat <- tibble(
     "ninfea", "nfbc66", "nfbc86", "raine", "rhea", "sws", "combined"),
   cohort_neat = c(
     "ABCD", "ALSPAC", "BiB", "CHOP", "DNBC", "EDEN", "EDEN Nancy", "EDEN Poitiers", 
-    "ELFE", "GECKO", "GENR", "HGS", "INMA", "INMA Gipuzkoa", "INMA Sabadell", 
-    "INMA Valencia", "MoBa", "NINFEA", "NFBC66", "NFBC86", "Raine", "RHEA", "SWS", 
+    "ELFE", "GECKO", "GenR", "HGS", "INMA", "INMA Gipuzkoa", "INMA Sabadell", 
+    "INMA Valencia", "MoBa", "NINFEA", "NFBC66", "NFBC86", "The Raine study", "RHEA", "SWS", 
     "Combined"), 
   country = c(
-    "Netherlands", "UK", "UK", "Multiple", "Denmark", "France", "France", "France", 
+    "Netherlands", "UK", "UK", "Multiple*", "Denmark", "France", "France", "France", 
     "France", "Netherlands", "Netherlands", "Greece", "Spain", "Spain", "Spain", 
     "Spain", "Norway", "Italy", "Finland", "Finland", "Australia", "Greece", "UK", 
     ""))
